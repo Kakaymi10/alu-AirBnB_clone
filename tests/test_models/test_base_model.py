@@ -6,7 +6,8 @@ from unittest.mock import patch
 import time
 
 "impoting the file to test"
-from ../../models/base_model import BaseModel
+from alu_AirBnB_clone.models.base_model import BaseModel
+
 
 """Class"""
 class TestBaseModel(unittest.TestCase):
