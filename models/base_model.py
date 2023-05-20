@@ -12,10 +12,26 @@ common attributes/methods for other classes
 """
 class BaseModel:
     """Public instance attributes"""
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue  # Skip adding the '__class__' attribute
+                setattr(self, key, value)
+            
+            # Convert 'created_at' and 'updated_at' strings to datetime objects
+            if 'created_at' in kwargs:
+                self.created_at = datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                self.created_at = self.created_at
+            if 'updated_at' in kwargs:
+                self.updated_at = datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                self.updated_at = self.updated_at
+        else:
+            self.id = str(uuid.uuid4())  # Set default value for 'id'
+            self.created_at = datetime.now()  # Set current datetime for 'created_at'
 
     """Str method"""
     def __str__(self):
