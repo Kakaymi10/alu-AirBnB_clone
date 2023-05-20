@@ -4,50 +4,47 @@ import unittest
 from datetime import datetime
 from unittest.mock import patch
 import time
+import sys
+dirctory_path = r'C:\Users\HP\Desktop\alu-AirBnB_clone'
+sys.path.append(dirctory_path)  # Replace with the actual path to the project directory
 
-"impoting the file to test"
-from alu_AirBnB_clone.models.base_model import BaseModel
+from models.base_model import BaseModel
 
 
-"""Class"""
-class TestBaseModel(unittest.TestCase):
 
-    """functions"""
+ # Import the module containing the BaseModel class
+
+class BaseModelTestCase(unittest.TestCase):
+
+    def setUp(self):
+        # Create a BaseModel instance with some initial values for testing
+        self.base_model = BaseModel(id='123', created_at='2023-01-01T12:00:00.000', updated_at='2023-01-01T12:00:00.000')
+
     def test_init(self):
-        """test"""
-        model = BaseModel()
-        self.assertIsInstance(model.id, str)
-        self.assertIsInstance(model.created_at, datetime)
-        self.assertIsInstance(model.updated_at, datetime)
+        # Check if the instance attributes are set correctly during initialization
+        self.assertEqual(self.base_model.id, '123')
+        self.assertEqual(self.base_model.created_at, datetime(2023, 1, 1, 12, 0, 0))
+        self.assertEqual(self.base_model.updated_at, datetime(2023, 1, 1, 12, 0, 0))
 
-    """functions"""
     def test_save(self):
-        model = BaseModel()
-        initial_updated_at = model.updated_at
-        # Introduce a small time delay
-        time.sleep(0.1)
+        # Check if the save method updates the updated_at attribute with the current datetime
+        self.base_model.save()
+        self.assertNotEqual(self.base_model.updated_at, datetime(2023, 1, 1, 12, 0, 0))
 
-        model.save()
-        self.assertNotEqual(initial_updated_at, model.updated_at)
-
-    """functions"""
     def test_to_dict(self):
-        model = BaseModel()
-        obj_dict = model.to_dict()
-        self.assertIsInstance(obj_dict, dict)
-        self.assertEqual(obj_dict['__class__'], 'BaseModel')
-        self.assertEqual(obj_dict['id'], model.id)
-        self.assertEqual(obj_dict['created_at'], model.created_at.isoformat())
-        self.assertEqual(obj_dict['updated_at'], model.updated_at.isoformat())
+        # Check if the to_dict method returns a dictionary with the expected keys and values
+        expected_dict = {
+            'id': '123',
+            'created_at': '2023-01-01T12:00:00',
+            'updated_at': '2023-01-01T12:00:00',
+            '__class__': 'BaseModel'
+        }
+        self.assertEqual(self.base_model.to_dict(), expected_dict)
 
-    """functions"""
     def test_str(self):
-        model = BaseModel()
-        with patch('builtins.print') as mock_print:
-            expected_output = f"[BaseModel] ({model.id}) {model.__dict__}"
-            model.__str__()
-            mock_print.assert_called_with(expected_output)
+        # Check if the str method returns the expected string representation
+        expected_str = "[BaseModel] (123) {'id': '123', 'created_at': datetime.datetime(2023, 1, 1, 12, 0), 'updated_at': datetime.datetime(2023, 1, 1, 12, 0)}"
+        self.assertEqual(str(self.base_model), expected_str)
 
-"""Run it"""
 if __name__ == '__main__':
     unittest.main()
