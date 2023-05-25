@@ -3,11 +3,11 @@
 import uuid
 """Importing the datetime module"""
 from datetime import datetime
+import models
 import sys
 dirctory_path = r'C:\Users\HP\Desktop\alu-AirBnB_clone'
 sys.path.append(dirctory_path) 
 
-from models.__init__ import storage
 
 
 
@@ -19,9 +19,6 @@ common attributes/methods for other classes
 class BaseModel:
     """Public instance attributes"""
     def __init__(self, *args, **kwargs):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -38,7 +35,9 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())  # Set default value for 'id'
             self.created_at = datetime.now()  # Set current datetime for 'created_at'
-        storage.new(self)
+            self.updated_at = datetime.now()
+            models.storage.new(self)
+    
     """Str method"""
     def __str__(self):
         class_name = self.__class__.__name__
@@ -48,9 +47,8 @@ class BaseModel:
     updates the public instance attribute updated_at with the current datetime"""
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
-
-    
+        models.storage.save()
+   
     """to_dict(self): returns a dictionary containing all keys/values 
     of __dict__ of the instance:"""
     def to_dict(self):
