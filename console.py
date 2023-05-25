@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-# Importing cmd module
+"""This module implements a cmd console for HBNB."""
+
 import cmd
 
 
-# Creating class HBNBCommand class
 class HBNBCommand(cmd.Cmd):
+    """HBNB command-line interface."""
+
     prompt = "(hbnb) "
 
-    # Quitting method
     def do_quit(self, arg):
         """Quit command to exit the program."""
         print("Exiting...")
