@@ -2,6 +2,9 @@
 """This module implements a cmd console for HBNB."""
 
 import cmd
+from models import storage
+from datetime import datetime
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
