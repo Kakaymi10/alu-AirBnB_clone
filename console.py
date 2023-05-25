@@ -1,31 +1,31 @@
 #!/usr/bin/python3
-#importing cmd module
+# Importing cmd module
 import cmd
 
+
+# Creating class HBNBCommand class
 class HBNBCommand(cmd.Cmd):
-    #Class to handle the cmd
     prompt = "(hbnb) "
 
-    #Quitting meth
+    # Quitting method
     def do_quit(self, arg):
-        #return quit
-        print("Exitting...")
+        """Quit command to exit the program."""
+        print("Exiting...")
         return True
     
-    #help quit
     def help_quit(self):
-        #Return quit
+        """Display help message for quit command."""
         print("Quit command to exit the program")
-    
-    #Emptyline pass
+
     def emptyline(self):
+        """Do nothing when an empty line is entered."""
         pass
-    
-    #Exit EOF
+
     def do_EOF(self, arg):
         """EOF signal to exit the program."""
-        print("Exitting")
+        print("Exiting")
         return True
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
