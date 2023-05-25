@@ -2,8 +2,8 @@
 #importing cmd module
 import cmd
 
-#creating class HBNBCommand class
 class HBNBCommand(cmd.Cmd):
+    #Class to handle the cmd
     prompt = "(hbnb) "
 
     #Quitting meth
