@@ -4,9 +4,6 @@ import uuid
 """Importing the datetime module"""
 from datetime import datetime
 import models
-import sys
-dirctory_path = r'C:\Users\HP\Desktop\alu-AirBnB_clone'
-sys.path.append(dirctory_path) 
 
 
 
