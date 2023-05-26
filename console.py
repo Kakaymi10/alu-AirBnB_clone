@@ -30,6 +30,9 @@ class HBNBCommand(cmd.Cmd):
     """
     This class defines the console for the AirBnB clone project
     """
+    def __init__(self):
+        super().__init__()
+        self.__all_classes = []  # Add this line to define the attribute
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
