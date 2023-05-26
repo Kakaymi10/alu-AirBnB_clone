@@ -31,7 +31,7 @@ class BaseModel:
                 self.updated_at = self.updated_at
         else:
             self.id = str(uuid.uuid4())  # Set default value for 'id'
-            self.created_at = datetime.now()  # Set current datetime for 'created_at'
+            self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
 
@@ -41,12 +41,13 @@ class BaseModel:
         return f"[{class_name}] ({self.id}) {self.__dict__}"
 
     """public instance save:
-    updates the public instance attribute updated_at with the current datetime"""
+    updates the public instance attribute
+    updated_at with the current datetime"""
     def save(self):
         self.updated_at = datetime.now()
         models.storage.save()
 
-    """to_dict(self): returns a dictionary containing all keys/values 
+    """to_dict(self): returns a dictionary containing all keys/values
     of __dict__ of the instance:"""
     def to_dict(self):
         obj_dict = self.__dict__.copy()
