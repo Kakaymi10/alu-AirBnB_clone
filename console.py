@@ -87,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
                     call = "{} {}".format(argl[0], command[1])
                     return argdict[command[0]](call)
         print("*** Unknown syntax: {}".format(arg))
-        return False    
+        return False
 
     def do_create(self, args):
         """
