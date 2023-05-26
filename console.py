@@ -15,6 +15,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
@@ -37,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
     """
     This class defines the console for the AirBnB clone project
     """
-    
+
     prompt = '(hbnb) '
     __all_classes = {
             "BaseModel",
@@ -54,21 +55,18 @@ class HBNBCommand(cmd.Cmd):
         Quit command to exit the program
         """
         return True
-    
 
     def do_EOF(self, arg):
         """
         EOF command to exit the program
         """
         return True
-    
 
     def emptyline(self):
         """
         Empty line
-        """ 
+        """
         pass
-    
 
     def default(self, arg):
         """This is the default behavior for cmd module when input is invalid"""
@@ -89,8 +87,7 @@ class HBNBCommand(cmd.Cmd):
                     call = "{} {}".format(argl[0], command[1])
                     return argdict[command[0]](call)
         print("*** Unknown syntax: {}".format(arg))
-        return False
-    
+        return False    
 
     def do_create(self, args):
         """
@@ -105,10 +102,8 @@ class HBNBCommand(cmd.Cmd):
             return
         # If the class name doesn’t exist,
         # print ** class doesn't exist ** (ex: $ create MyModel)
-
         # convert the args to a list
         args = args.split()
-
         # the 1st element of the list is the class name
         class_name = args[0]
         if class_name not in self.__all_classes:
@@ -120,7 +115,6 @@ class HBNBCommand(cmd.Cmd):
         new_object.save()
         print(new_object.id)
         storage.save()
-
 
     def do_show(self, args):
         """Usage: to show <class> <id> or <class>.show(<id>)
@@ -146,11 +140,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(objdict[object_key])
 
-
     def do_destroy(self, args):
         """Usage: to destroy <class> <id> or <class>.destroy(<id>)
         Delete class instance of given id."""
-
         arg_list = args.split()
         all_objects = storage.all()
         if len(arg_list) == 0:
@@ -173,12 +165,10 @@ class HBNBCommand(cmd.Cmd):
             del all_objects[object_key]
             storage.save()
 
-
     def do_all(self, args):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of given class
         If no class is specified, display all instantiated objects."""
-
         arg_list = args.split()
         all_objects = storage.all()
         object_list = []
@@ -199,14 +189,12 @@ class HBNBCommand(cmd.Cmd):
                 object_list.append(str(all_objects[obj]))
         print(object_list)
 
-
     def do_update(self, args):
         """Usage: to update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
         Update class instance of given id by adding or updating
        given attribute key/value pair or dictionary."""
-
         arg_list = args.split()
         all_objects = storage.all()
 
@@ -248,7 +236,6 @@ class HBNBCommand(cmd.Cmd):
 
         # update BaseModel 00c0c670-e5f3-4603-9aa1-3caca5ee0e75
         # email "aibnb@mail.com"
-
         obj = all_objects[object_key]
         # check if the attribute exist already
         if attribute_name in obj.to_dict():
@@ -264,18 +251,15 @@ class HBNBCommand(cmd.Cmd):
 
         storage.save()
 
-
     def do_count(self, args):
         """Usage: to count <class> or <class>.count()
         Retrieve number of instances of given class."""
-
         arg_list = args.split()
         count = 0
         for obj in storage.all().values():
             if arg_list[0] == obj.__class__.__name__:
                 count += 1
         print(count)
-
 
 if __name__ == '__main__':
     """
