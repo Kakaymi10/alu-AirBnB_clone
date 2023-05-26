@@ -32,10 +32,12 @@ def parse(arg):
         retl.append(curly_braces.group())
         return retl
 
+
 class HBNBCommand(cmd.Cmd):
     """
     This class defines the console for the AirBnB clone project
     """
+    
     prompt = '(hbnb) '
     __all_classes = {
             "BaseModel",
@@ -52,18 +54,21 @@ class HBNBCommand(cmd.Cmd):
         Quit command to exit the program
         """
         return True
+    
 
     def do_EOF(self, arg):
         """
         EOF command to exit the program
         """
         return True
+    
 
     def emptyline(self):
         """
         Empty line
-        """
+        """ 
         pass
+    
 
     def default(self, arg):
         """This is the default behavior for cmd module when input is invalid"""
@@ -85,6 +90,7 @@ class HBNBCommand(cmd.Cmd):
                     return argdict[command[0]](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
+    
 
     def do_create(self, args):
         """
@@ -167,6 +173,7 @@ class HBNBCommand(cmd.Cmd):
             del all_objects[object_key]
             storage.save()
 
+
     def do_all(self, args):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of given class
@@ -191,6 +198,7 @@ class HBNBCommand(cmd.Cmd):
             if class_name == all_objects[obj].__class__.__name__:
                 object_list.append(str(all_objects[obj]))
         print(object_list)
+
 
     def do_update(self, args):
         """Usage: to update <class> <id> <attribute_name> <attribute_value> or
@@ -256,6 +264,7 @@ class HBNBCommand(cmd.Cmd):
 
         storage.save()
 
+
     def do_count(self, args):
         """Usage: to count <class> or <class>.count()
         Retrieve number of instances of given class."""
@@ -266,6 +275,7 @@ class HBNBCommand(cmd.Cmd):
             if arg_list[0] == obj.__class__.__name__:
                 count += 1
         print(count)
+
 
 if __name__ == '__main__':
     """
