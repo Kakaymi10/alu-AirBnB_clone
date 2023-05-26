@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""The __init___ meth for models dir"""
 from models.engine.file_storage import FileStorage
 
 # Create a unique FileStorage instance
