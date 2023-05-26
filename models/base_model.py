@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 """Importing the UUID module"""
 import uuid
-"""Importing the datetime module"""
 from datetime import datetime
 import models
-
-
-
 
 
 """
