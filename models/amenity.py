@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""Defines City class."""
+"""Defines Amenity class."""
 from models.base_model import BaseModel
 
 
-class City(BaseModel):
-    """Represent a city.
+class Amenity(BaseModel):
+    """Represent an amenity.
 
-    Attributes:
-        state_id (str): State id.
-        name (str): Name of city.
+    Attribute:
+        name (str): Name of amenity.
     """
 
-    state_id = ""
     name = ""
