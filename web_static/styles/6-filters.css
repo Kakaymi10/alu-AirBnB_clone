@@ -1,0 +1,76 @@
+.filters{
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 30px;
+}
+.buttton_search{
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.buttton_search:hover{
+    opacity: 90%;
+}
+.loc-am{
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    
+    align-items: center;
+    margin-left: 0;
+
+}
+.locations{
+    border-right: 1px solid #DDDDDD;
+    margin-right: 0;
+    padding-right: 2em;
+
+}
+.title{
+    font-weight: 600;
+    
+}
+.subtitle{
+    font-weight: 400;
+    font-size: 14px;
+
+}
+.popover{
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    list-style-type: none;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    width: 100%;
+    top: 70px;
+}
+.st_pop{
+    list-style-type: none;
+    margin: 1em;
+}
+.loc-am:hover .popover {
+    display: block;
+    text-align: left;
+}
+.pop_list{
+    margin-left: 2em;
+}
+.st_tit_pop{
+    margin-left: 1em;
+}
