@@ -26,15 +26,19 @@
 .loc-am{
     height: 100%;
     width: 25%;
-    padding: 10px;
     display: flex;
     align-items: center;
+    margin-left: 0;
+  
 }
 .locations{
     border-right: 1px solid #DDDDDD;
+    margin-right: 0;
+    padding-right: 2em;
 }
 .title{
     font-weight: 600;
+    
 }
 .subtitle{
     font-weight: 400;
