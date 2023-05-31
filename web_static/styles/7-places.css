@@ -4,6 +4,7 @@
 .places_title{
     font-size: 30px;
     text-align: left;
+    margin-left: 6px;
 }
 .places_listing{
     padding: 20px;
