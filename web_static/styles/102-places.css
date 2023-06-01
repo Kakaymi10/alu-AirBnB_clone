@@ -123,6 +123,7 @@
         width: 90%;
         border: 1px solid #DDDDDD;
         border-radius: 4px;
+        height: 30vh;
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -140,21 +141,35 @@
         cursor: pointer;
         transition: 0.1s;
         width: 80%;
+        margin-top: 1em;
     }
     .buttton_search:hover{
         opacity: 90%;
     }
     .loc-am{
-        margin: 1em;
+        margin-top: 1em;
         position: relative;
         display: inline-block;
         height: 4em;
-       
         border-bottom: #DDDDDD 1px solid;
         width: 100%;
     
     }
     .locations{
-        margin: inherit;
+           border-right: none;
+           margin-top: 0;
+            margin-right: 0;
+            padding-right: 0;
+    
+    }
+    .title{
+        font-size: 20px;
+        font-weight: 600;
+        
+    }
+    .subtitle{
+        font-weight: 400;
+        font-size: 14px;
+    
     }
 }
